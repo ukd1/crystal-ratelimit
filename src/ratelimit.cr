@@ -17,7 +17,6 @@ class Ratelimit
   end
 
   def add(key, interval_ms)
-    t = t_ms
     @redis.zadd(key, t_ms, SecureRandom.uuid)
     @redis.pexpire(key, interval_ms)
   end
