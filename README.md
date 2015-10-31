@@ -12,14 +12,16 @@ dependencies:
     github: ukd1/ratelimit
 ```
 
-
 ## Usage
 
 ```crystal
 require "redis"
 require "ratelimit"
+
+redis = Redis.new()
+
 # make a new rate limit instace, passing in a redis connection
-r = Ratelimit.new(Redis.new)
+r = Ratelimit.new(redis)
 
 # limit request over this interval, in milliseconds
 interval = 100
@@ -38,7 +40,7 @@ puts "Hit limit : #{r.used("test")}"
 
 ## Development
 
-You'll need a working redis database.
+You'll need a working Redis database.
 
 ## Contributing
 
