@@ -17,15 +17,15 @@ class Ratelimit
   end
 
   def add(key, interval_ms)
-    @redis.zadd(key, t_ms, SecureRandom.uuid)
+    @redis.zadd(key, time_now_ms, SecureRandom.uuid)
     @redis.pexpire(key, interval_ms)
   end
 
   def trim(key, interval_ms)
-    @redis.zremrangebyscore(key, "-inf", t_ms - interval_ms)
+    @redis.zremrangebyscore(key, "-inf", time_now_ms - interval_ms)
   end
 
-  def t_ms
+  protected def time_now_ms
     Time.now.epoch_ms
   end
 end
