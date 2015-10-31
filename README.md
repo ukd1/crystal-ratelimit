@@ -1,5 +1,7 @@
 # ratelimit
 
+[![Build Status](https://travis-ci.org/ukd1/crystal-ratelimit.svg)](https://travis-ci.org/ukd1/crystal-ratelimit)
+
 Simple rate limiting class, backed by Redis sorted sets that use a minimal amounts of keys.
 
 ## Installation
